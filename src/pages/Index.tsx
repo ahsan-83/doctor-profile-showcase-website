@@ -5,11 +5,28 @@ import EducationSection from "@/components/EducationSection";
 import SpecialtySection from "@/components/SpecialtySection";
 import AwardsSection from "@/components/AwardsSection";
 import TreatmentsSection from "@/components/TreatmentsSection";
+import BlogSection from "@/components/BlogSection";
 import GallerySection from "@/components/GallerySection";
 import LocationsSection from "@/components/LocationsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import { useEffect } from "react";
+
+declare global {
+  interface Window {
+    googleTranslateElementInit: () => void;
+    google: {
+      translate: {
+        TranslateElement: {
+          new (options: any, id: string): void;
+          FloatPosition: {
+            TOP_LEFT: string;
+          };
+        };
+      };
+    };
+  }
+}
 
 const Index = () => {
   useEffect(() => {
@@ -26,8 +43,8 @@ const Index = () => {
     new window.google.translate.TranslateElement(
       {
         pageLanguage: "en",
-        includedLanguages: "en,bn,hi", // include this for selected languages
-        layout: google.translate.TranslateElement.FloatPosition.TOP_LEFT,
+        includedLanguages: "en,bn,hi",
+        layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT,
       },
       "google_translate_element"
     );
@@ -44,6 +61,7 @@ const Index = () => {
         <SpecialtySection />
         <AwardsSection />
         <TreatmentsSection />
+        <BlogSection />
         <GallerySection />
         <LocationsSection />
         <ContactSection />
