@@ -1,4 +1,5 @@
 import { Video } from "lucide-react";
+import { useState } from "react";
 import {
   Card,
   CardContent,
@@ -6,8 +7,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 const BlogSection = () => {
+  const [showAll, setShowAll] = useState(false);
+
   const videos = [
     {
       id: 1,
@@ -37,7 +41,65 @@ const BlogSection = () => {
       type: "youtube",
       embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     },
+    {
+      id: 5,
+      title: "Managing High Blood Pressure",
+      category: "Prevention",
+      type: "youtube",
+      embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    },
+    {
+      id: 6,
+      title: "Diet and Nutrition for Heart Health",
+      category: "Lifestyle",
+      type: "youtube",
+      embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    },
+    {
+      id: 7,
+      title: "Signs and Symptoms of Heart Attack",
+      category: "Emergency",
+      type: "facebook",
+      embedUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook%2Fvideos%2F10153231379946729%2F&width=500&show_text=false",
+    },
+    {
+      id: 8,
+      title: "Stress Management for Cardiac Patients",
+      category: "Wellness",
+      type: "youtube",
+      embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    },
+    {
+      id: 9,
+      title: "Understanding Cholesterol Levels",
+      category: "Education",
+      type: "youtube",
+      embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    },
+    {
+      id: 10,
+      title: "Exercise Guidelines After Heart Surgery",
+      category: "Recovery",
+      type: "youtube",
+      embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    },
+    {
+      id: 11,
+      title: "Preventing Heart Disease: Lifestyle Changes",
+      category: "Prevention",
+      type: "facebook",
+      embedUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook%2Fvideos%2F10153231379946729%2F&width=500&show_text=false",
+    },
+    {
+      id: 12,
+      title: "Medication Management for Heart Conditions",
+      category: "Treatment",
+      type: "youtube",
+      embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    },
   ];
+
+  const displayedVideos = showAll ? videos : videos.slice(0, 4);
 
   return (
     <section id="resources" className="py-20 bg-background">
@@ -56,7 +118,7 @@ const BlogSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {videos.map((video) => (
+          {displayedVideos.map((video) => (
             <Card
               key={video.id}
               className="overflow-hidden hover:shadow-lg transition-shadow"
@@ -81,6 +143,18 @@ const BlogSection = () => {
             </Card>
           ))}
         </div>
+
+        {videos.length > 4 && (
+          <div className="text-center mt-8">
+            <Button
+              onClick={() => setShowAll(!showAll)}
+              size="lg"
+              variant="outline"
+            >
+              {showAll ? "Show Less" : "View More Videos"}
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );
