@@ -7,6 +7,7 @@ import AwardsSection from "@/components/AwardsSection";
 import TreatmentsSection from "@/components/TreatmentsSection";
 import BlogSection from "@/components/BlogSection";
 import GallerySection from "@/components/GallerySection";
+import FacebookPostsSection from "@/components/FacebookPostsSection";
 import LocationsSection from "@/components/LocationsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -63,6 +64,7 @@ const Index = () => {
         <TreatmentsSection />
         <BlogSection />
         <GallerySection />
+        <FacebookPostsSection />
         <LocationsSection />
         <ContactSection />
         <Footer />
